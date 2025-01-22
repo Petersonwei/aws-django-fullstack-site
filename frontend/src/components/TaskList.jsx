@@ -24,7 +24,7 @@ const TaskList = () => {
     // If an error occurs during the request, the catch will handle the error.
     const fetchTasks = async () => {
         try {
-            const res = await axios.get('http://localhost:8000/tasks');
+            const res = await axios.get('http://localhost:8000/api/tasks/');
             setTasks(res.data);
         } catch (err) {
             console.error('Error fetching tasks:', err);
