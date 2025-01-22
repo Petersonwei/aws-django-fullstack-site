@@ -56,6 +56,18 @@ const TaskList = () => {
         }
     };
 
+    const toggleComplete = async (task) => {
+        try {
+            const res = await axios.patch(`http://localhost:8000/api/tasks/${task.id}/`, {
+                completed: !task.completed,
+            });
+            setTasks(tasks.map((t) => (t.id === task.id ? res.data : t)));
+        } catch (err) {
+            console.log('Error updating task: ', err);
+            setErr('Failed to update task');
+        }
+    };
+
     return (
         <div>
             <h1>Task List</h1>
@@ -77,7 +89,13 @@ const TaskList = () => {
             <ul>
                 {tasks.map((task) => (
                     <li key={task.id}>
-                        <span>{task.title}</span>
+                        <span 
+                            style={{ textDecoration: task.completed 
+                                ? 'line-through' 
+                                : 'none' }} 
+                                onClick={() => toggleComplete(task)}>
+                            {task.title}
+                        </span>
                     </li>
                 ))}
             </ul>
