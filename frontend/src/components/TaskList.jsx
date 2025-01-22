@@ -56,6 +56,16 @@ const TaskList = () => {
         }
     };
 
+    const deleteTask = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8000/api/tasks/${id}/`);
+            setTasks(tasks.filter((t) => t.id !== id));
+        } catch (err) {
+            console.log('Error deleting task: ', err);
+            setErr('Failed to delete task');
+        }
+    };
+
     const toggleComplete = async (task) => {
         try {
             const res = await axios.patch(`http://localhost:8000/api/tasks/${task.id}/`, {
@@ -96,6 +106,9 @@ const TaskList = () => {
                                 onClick={() => toggleComplete(task)}>
                             {task.title}
                         </span>
+                        <button onClick={() => deleteTask(task.id)}>
+                            Delete
+                        </button>
                     </li>
                 ))}
             </ul>
