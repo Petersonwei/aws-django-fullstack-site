@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import styles from './TaskList.module.css';
 
 
 const TaskList = () => {
@@ -79,7 +80,7 @@ const TaskList = () => {
     };
 
     return (
-        <div>
+        <div className={styles.TaskList}> {/* Added className for styling */}
             <h1>Task List</h1>
             {err && <div style={{ color: 'red', marginBottom: '1rem' }}>{err}</div>}
 
@@ -92,6 +93,7 @@ const TaskList = () => {
                     placeholder="Add a new task..."
                 />
                 <button 
+                    className={styles.addButton} // Added class for styling
                     onClick={addTask}>
                     Add Task
                 </button>
@@ -106,7 +108,9 @@ const TaskList = () => {
                                 onClick={() => toggleComplete(task)}>
                             {task.title}
                         </span>
-                        <button onClick={() => deleteTask(task.id)}>
+                        <button 
+                            className={styles.deleteButton} // Added class for styling
+                            onClick={() => deleteTask(task.id)}>
                             Delete
                         </button>
                     </li>

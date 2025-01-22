@@ -1,0 +1,72 @@
+.TaskList {
+    font-family: 'Inter', sans-serif; /* Updated font to match shadcn style */
+   
+    h1 {
+        font-size: 3rem; /* Adjusted font size */
+        color: #1f2937; /* Changed color to a darker shade */
+        margin-bottom: 1rem; /* Added margin for spacing */
+    }
+
+    input[type="text"] {
+        font-size: 1.5rem; /* Adjusted font size */
+        padding: 12px; /* Increased padding for better touch targets */
+        border: 2px solid #4CAF50; /* Kept the same border color */
+        border-radius: 0.375rem; /* Updated border radius for a more modern look */
+        color: #111827; /* Changed text color to a darker shade */
+        background-color: #f9fafb; /* Added a light background color */
+        transition: border-color 0.3s; /* Added transition for border color */
+    }
+
+    input[type="text"]:focus {
+        outline: none; /* Removed default outline */
+        border-color: #4CAF50; /* Kept the same focus border color */
+    }
+
+    ul {
+        padding: 0; /* Removed padding for a cleaner look */
+        list-style-type: none; /* Removed default list styling */
+    }
+    
+    li {
+        font-size: 1.5rem; /* Adjusted font size */
+        font-weight: 500; /* Changed font weight for a lighter look */
+        padding: 12px; /* Adjusted padding */
+        background-color: #e5e7eb; /* Changed background color to a light gray */
+        margin-bottom: 0.5rem; /* Reduced margin for tighter spacing */
+        border: 1px solid #d1d5db; /* Updated border color */
+        border-radius: 0.375rem; /* Updated border radius */
+        display: flex;
+        justify-content: space-between; /* Added space between items */
+        align-items: center; /* Centered items vertically */
+    }
+
+    button {  
+        font-size: 1.5rem; /* Adjusted font size */
+        font-weight: 600; /* Changed font weight for emphasis */
+        padding: 10px 15px; /* Adjusted padding */
+        color: white;
+        transition: background-color 0.3s ease; /* Adjusted transition duration */
+        border: none; /* Removed border */
+        border-radius: 0.375rem; /* Updated border radius */
+    }
+  
+    .addButton {
+        background-color: #4CAF50; /* Kept the same background color */
+        margin-left: 10px;
+    }
+
+    .addButton:hover {
+        background-color: #388e3c; /* Darkened hover color */
+    }
+
+    .deleteButton {
+        background-color: #f44336; /* Kept the same background color */
+        padding: 8px 12px; /* Kept padding */
+        font-size: 1.4rem; /* Kept font size */
+        margin-left: 10px;
+    }
+
+    .deleteButton:hover {
+        background-color: #c62828; /* Darkened hover color */
+    }
+}
