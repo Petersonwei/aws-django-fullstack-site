@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
 const TaskList = () => {
 
     const [tasks, setTasks] = useState([]);
+    const [newTask, setNewTask] = useState('');
     const [err, setErr] = useState(null);
 
     // useEffect is a React hook that runs a function after the component mounts.
@@ -32,9 +33,47 @@ const TaskList = () => {
         }
     };
 
+    // This function adds a new task to the task list.
+    // It sends an HTTP POST request to the server.
+    // This request includes a JSON object { title: newTask } as the data payload.
+    const addTask = async () => {
+        // Returns early and does not add a new task, if newTask is empty.
+        if (!newTask) return;
+
+        try {
+            const res = await axios.post('http://localhost:8000/api/tasks/', {
+                title: newTask,
+                description: newTask,  // Using the title as description for now
+                completed: false,
+            });
+
+            setTasks([...tasks, res.data]);
+            setNewTask('');
+        } 
+        catch (err) {
+            console.log('Error creating task: ', err);
+            setErr('Failed to create task');
+        }
+    };
+
     return (
         <div>
             <h1>Task List</h1>
+            {err && <div style={{ color: 'red', marginBottom: '1rem' }}>{err}</div>}
+
+            <div>
+                <input 
+                    name="newTask"
+                    type="text" 
+                    value={newTask} 
+                    onChange={(e) => setNewTask(e.target.value)} 
+                    placeholder="Add a new task..."
+                />
+                <button 
+                    onClick={addTask}>
+                    Add Task
+                </button>
+            </div>
             <ul>
                 {tasks.map((task) => (
                     <li key={task.id}>
