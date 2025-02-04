@@ -1,5 +1,8 @@
 # Django + React Task Management Application
 
+![image](https://github.com/user-attachments/assets/008d3a5a-35ba-4b68-979a-9f0994c64e0d)
+
+
 A fullstack task management application built with Django REST Framework backend and React + Vite frontend.
 
 ## Features
